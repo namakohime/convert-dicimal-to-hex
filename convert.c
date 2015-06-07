@@ -16,19 +16,16 @@ int main( ){
   return 0;
 }
 
-char dic_to_hex(int num, int deg){
-  
+char dic_to_hex(int num, int deg){ 
+
   int res;
-  if(deg==4){
-    res=num/4096;
-  }else if(deg==3){
-    res=(num-(num/4096)*4096)/256;
-  }else if(deg==2){
-    int a = num - (num/4096)*4096;
-    res=(a-(a/256)*256)/16;
-  }else if(deg==1){
+  int i;
+  
+  for(i=0; i<deg; i++){
     res=num%16;
+    num/=16;
   }
+  
   if(res>=10){
       res -= 10;
       return (char)('A' + res);
